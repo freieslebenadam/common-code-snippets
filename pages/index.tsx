@@ -1,4 +1,3 @@
-import type { NextPage } from 'next'
 import { useState } from 'react'
 import { getAllSnippets } from "../utils/contentful"
 import { ISnippet } from '../types'
@@ -21,8 +20,6 @@ type Props = {
 
 const Home = ({ snippets }: Props) => {
   const [searchInput, setSearchInput] = useState("")
-
-  console.log(snippets)
 
   return (
     <section className="container pt-20 animate-fade pb-10">

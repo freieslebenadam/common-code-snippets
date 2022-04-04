@@ -7,7 +7,7 @@ type Props = {
 
 const Layout = ({ children }: Props) => {
   return (
-    <div className='text-neutral-50'>
+    <div className='text-neutral-50 selection:bg-dim-200'>
       <Head>
         <title>Commonly Used Code Snippets</title>
       </Head>
