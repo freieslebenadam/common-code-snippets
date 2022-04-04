@@ -11,6 +11,7 @@ const getAllSnippets = async () => {
   const snippets = items.map(item => {
     return {
       id: item.sys.id,
+      slug: item.fields.slug,
       name: item.fields.name,
       description: item.fields.description,
       language: item.fields.language.fields,

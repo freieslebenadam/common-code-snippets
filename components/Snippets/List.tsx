@@ -14,7 +14,7 @@ const List = ({ snippets }: Props) => {
   )
 
   return (
-    <div className='flex flex-col gap-3 items-center'>
+    <div className='flex flex-col gap-4 items-center'>
       {snippets.map(snippet => <ListItem snippet={snippet} />)}
     </div>
   )

@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import { useState } from 'react'
-import hljs from 'highlight.js'
 import { getAllSnippets } from "../utils/contentful"
 import { ISnippet } from '../types'
 import { SnippetsList } from "../components/Snippets"

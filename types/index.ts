@@ -6,6 +6,7 @@ export interface ITag {
 
 export interface ISnippet {
   id: string,
+  slug: string,
   name: string,
   description: string,
   language: {
