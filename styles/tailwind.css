@@ -16,6 +16,15 @@
   .transition-300 {
     @apply transition-all duration-300;
   }
+  .glass-panel {
+    @apply bg-lighter-100 backdrop-blur-xl rounded-md shadow-md p-8 border border-lighter-100;
+  }
+  .code-segment {
+    @apply bg-dim-300 rounded shadow-inner p-5 text-sm leading-6 overflow-x-clip overflow-y-auto;
+  }
+  .inline-tag {
+    @apply bg-dim-200 px-2 py-1 text-xs uppercase font-medium inline-block rounded shadow;
+  }
 }
 
 h1 { @apply text-4xl }

@@ -14,7 +14,7 @@ const List = ({ snippets }: Props) => {
   )
 
   return (
-    <div className='grid grid-cols-3 gap-4 items-center'>
+    <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 items-center'>
       {snippets.map(snippet => <ListItem key={snippet.id} snippet={snippet} />)}
     </div>
   )
