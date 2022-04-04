@@ -12,7 +12,7 @@ const Layout = ({ children }: Props) => {
         <title>Daily Tasks</title>
       </Head>
 
-      <main className='h-screen background overflow-auto'>
+      <main className='h-screen background overflow-auto pb-10'>
         {children}
       </main>
     </div>
