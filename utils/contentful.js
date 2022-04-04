@@ -22,7 +22,25 @@ const getAllSnippets = async () => {
   return snippets
 }
 
+const getSnippet = async (slug) => {
+  const { items } = await client.getEntries({
+    content_type: "snippet",
+    'fields.slug[in]': `${slug}`
+  })
+
+  const snippet = {
+    id: items[0].sys.id,
+    slug: items[0].fields.slug,
+    name: items[0].fields.name,
+    description: items[0].fields.description,
+    language: items[0].fields.language.fields,
+    code: items[0].fields.code
+  }
+
+  return snippet
+}
+
 module.exports = { 
-  client,
-  getAllSnippets
+  getAllSnippets,
+  getSnippet
 }
