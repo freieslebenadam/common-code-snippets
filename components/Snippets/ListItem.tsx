@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import hljs from 'highlight.js'
 import { ISnippet } from '../../types'
+import TagsList from '../UI/TagsList'
 
 type Props = {
   snippet: ISnippet
@@ -18,15 +19,7 @@ const ListItem = ({ snippet }: Props) => {
             {snippet.name}
           </h2>
           
-          <ul className='flex gap-2 mt-3'>
-            {snippet.tags&&
-              snippet.tags.map((tag,index) => (
-                <li key={index} className="inline-tag">
-                  {tag}
-                </li>
-              ))
-            }
-          </ul>
+          <TagsList tags={snippet.tags} />
 
           <p className='py-3 font-light text-sm opacity-80'>
             {snippet.description}

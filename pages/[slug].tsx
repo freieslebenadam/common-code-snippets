@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
 import React from 'react'
@@ -6,6 +6,8 @@ import hljs from 'highlight.js'
 import { ISnippet } from '../types'
 import { getAllSnippets, getSnippet } from '../utils/contentful'
 import { HomeButton } from '../components/UI'
+import icons from "../utils/icons"
+import TagsList from '../components/UI/TagsList'
 
 interface IStaticParams extends ParsedUrlQuery {
   slug: string
@@ -45,17 +47,7 @@ const DetailPage = ({ snippet }: Props) => {
         <HomeButton />
         <div className='glass-panel my-5'>
           <h2 className='font-semibold'>{snippet.name}</h2>
-          {snippet&&(
-            <ul className='flex gap-2 mt-3'>
-              {snippet.tags&&
-                snippet.tags.map((tag, index) => (
-                  <li key={index} className="inline-tag">
-                    {tag}
-                  </li>
-                ))
-              }
-            </ul>
-          )}
+          <TagsList tags={snippet.tags} />
           <p className='pt-6 font-light text-sm opacity-80'>
             {snippet.description}
           </p>
@@ -64,7 +56,12 @@ const DetailPage = ({ snippet }: Props) => {
           <p className='flex gap-2 items-center'>
             <span className='font-extralight opacity-80'>Language:</span>
             {" "}
-            <span className='font-semibold text-lg'>{snippet.language.title}</span>
+            <span className='font-semibold text-lg flex items-center gap-1'>
+              {icons.find(item => item.name === snippet.language.name)&&
+                icons.find(item => item.name === snippet.language.name)?.icon
+              }
+              {snippet.language.title}
+            </span>
           </p>
         </div>
       </div>

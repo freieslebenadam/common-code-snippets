@@ -4,10 +4,6 @@ export interface ILanguage {
   title: string
 }
 
-// export interface ITag {
-//   name: string,
-// }
-
 export interface ISnippet {
   id: string,
   slug: string,
@@ -16,4 +12,9 @@ export interface ISnippet {
   language: ILanguage,
   code: string,
   tags?: string[]
+}
+
+export interface ILanguageIcon {
+  name: string,
+  icon: JSX.Element
 }
