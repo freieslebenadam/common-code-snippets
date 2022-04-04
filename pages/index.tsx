@@ -1,25 +1,25 @@
 import type { NextPage } from 'next'
 import { useState } from 'react'
+import hljs from 'highlight.js'
+import { getAllSnippets } from "../utils/contentful"
+import { ISnippet } from '../types'
 
-const DUMMY_DATA = [
-  {
-    id: 0,
-    name: "Console Log",
-    description: "Logs something to a console.",
-    language: "JavaScript",
-    content: `console.log("Message")`
-  },
-  {
-    id: 1,
-    name: "useEffect Hook",
-    description: "Runs this function on component mount",
-    language: "JavaScript",
-    tags: ["React"],
-    content: `useEffect(() => {}, [])`
-  },
-]
+export async function getStaticProps() {
+  const snippets: ISnippet[] = await getAllSnippets()
 
-const Home: NextPage = () => {
+  return {
+    props: {
+      snippets
+    }
+  }
+}
+
+type Props = {
+  children?: React.ReactChild,
+  snippets: ISnippet[]
+}
+
+const Home = ({ snippets }: Props) => {
   const [searchInput, setSearchInput] = useState("")
 
   return (
@@ -39,15 +39,25 @@ const Home: NextPage = () => {
         />
       </div>
 
-      <div className='flex flex-col gap-3'>
-        {DUMMY_DATA.map(snippet => (
-          <div key={snippet.id} className="p-4 bg-dim-200 rounded-md shadow-md back-blur">
-            <h4 className='font-medium'>{snippet.name}</h4>
-            <p className='py-1 px-2 text-sm  rounded shadow my-2 bg-dim-100 inline-block'>{snippet.language}</p>
-            <p className='opacity-80 font-light mb-2'>{snippet.description}</p>
-            <pre className='bg-dim-100 p-2 rounded'>{snippet.content}</pre>
-          </div>
-        ))}
+      <div className='flex flex-col gap-3 items-center'>
+        {snippets&&snippets.map(snippet => {
+          const code = hljs.highlight(snippet.code, { language: snippet.language.name }).value
+          return (
+            <div key={snippet.id} className='bg-lighter-100 backdrop-blur-xl rounded-md shadow-md p-8 border border-lighter-100 w-5/12'>
+              <h2 className='font-semibold'>
+                {snippet.name}
+              </h2>
+              
+              <p className='py-3 font-light text-sm opacity-80'>
+                {snippet.description}
+              </p>
+              
+              <pre className='bg-dim-300 rounded shadow-inner p-5 text-sm leading-6'
+                dangerouslySetInnerHTML={{ __html: code }}
+              />
+            </div>
+          )
+        })}
       </div>
     </section>
   )
