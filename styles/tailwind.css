@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+  .transition-75 {
+    @apply transition-all duration-75;
+  }
+  .transition-100 {
+    @apply transition-all duration-100;
+  }
+  .transition-200 {
+    @apply transition-all duration-200;
+  }
+  .transition-300 {
+    @apply transition-all duration-300;
+  }
+}
+
+html, body {
+  @apply bg-cyan-600;
+}
+
+h1 { @apply text-4xl }
+h2 { @apply text-3xl }
+h3 { @apply text-2xl }
+h4 { @apply text-xl }
