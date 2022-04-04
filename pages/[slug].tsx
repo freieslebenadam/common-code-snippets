@@ -18,6 +18,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const { slug } = context.params as IStaticParams
   const snippet: ISnippet = await getSnippet(slug)
 
+  console.log("-------generating",snippet)
+
   return {
     props: {
       snippet
@@ -31,15 +33,16 @@ type Props = {
 
 const DetailPage = ({ snippet }: Props) => {
   const router = useRouter()
-  const code = hljs.highlight(snippet.code, { language: snippet.language.name }).value
   const [copied, setCopied] = useState(false)
-
+  
   if (router.isFallback) {
     return (
       <div className='flex justify-center items-center h-screen'>
       </div>
     )
   }
+
+  const code = hljs.highlight(snippet.code, { language: snippet.language.name }).value
 
   const copyCodeToClipboard = () => {
     navigator.clipboard.writeText(snippet.code)
@@ -86,6 +89,8 @@ const DetailPage = ({ snippet }: Props) => {
   )
 }
 
+export default DetailPage
+
 export const getStaticPaths: GetStaticPaths = async () => {
   const snippets: ISnippet[] = await getAllSnippets()
 
@@ -102,5 +107,3 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: true
   }
 }
-
-export default DetailPage
