@@ -47,6 +47,15 @@ module.exports = {
           "900":  "rgba(255,255,255,0.90)",
         },
       },
+      keyframes: {
+				fadeIn: {
+					"0%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
+      },
+      animation: {
+        fade: "200ms fadeIn ease-in-out"
+      }
     },
   },
   plugins: [],

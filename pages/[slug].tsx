@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
+import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
 import React from 'react'
 import { ISnippet } from '../types'
@@ -20,14 +21,23 @@ export const getStaticProps: GetStaticProps = async (context) => {
 }
 
 const DetailPage = ({ snippet }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const router = useRouter()
+
+  if (router.isFallback) {
+    return (
+      <div className='flex justify-center items-center h-screen'>
+      </div>
+    )
+  }
+
   return (
-    <div className='flex flex-col gap-5 backdrop-blur items-center justify-center h-screen max-w-[50%] mx-auto'>
+    <div className='animate-fade flex flex-col gap-5 backdrop-blur items-center justify-center h-screen max-w-[50%] mx-auto'>
       <code>{snippet.id}</code>
       <p><i>{snippet.slug}</i></p>
       <h1>{snippet.name}</h1>
       <p>{snippet.description}</p>
       <p>{snippet.language.name}</p>
-      <p>{snippet.code}</p>
+      <pre>{snippet.code}</pre>
     </div>
   )
 }
@@ -45,7 +55,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: 'blocking'
+    fallback: true
   }
 }
 

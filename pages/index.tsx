@@ -25,7 +25,7 @@ const Home = ({ snippets }: Props) => {
   console.log(snippets)
 
   return (
-    <section className="container pt-20">
+    <section className="container pt-20 animate-fade">
 
       <div className='w-[25rem] text-center mx-auto'>
         <h1 className='tracking-tighter font-semibold mb-4'>Commonly Used Code Snippets</h1>
