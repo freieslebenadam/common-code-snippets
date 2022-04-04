@@ -38,6 +38,7 @@ const Home = ({ snippets }: Props) => {
           tabIndex={0}
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
+          onClick={() => setSearchInput("")}
           className="px-4 py-2 rounded-md mx-auto block shadow bg-lighter-200 text-lighter-900 placeholder:text-lighter-400 focus:outline-none outline-none ring-0 focus:ring-0 transition-200 focus:shadow-xl focus:scale-[1.01] border border-lighter-100 w-[30rem]"
         />
       </div>
