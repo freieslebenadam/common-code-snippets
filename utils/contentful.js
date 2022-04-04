@@ -9,6 +9,8 @@ const getAllSnippets = async () => {
   const { items } = await client.getEntries({ content_type: "snippet" })
 
   const snippets = items.map(item => {
+    const tags = item.fields.tags === undefined ? [] : item.fields.tags.map(tag => tag.fields.name)
+
     return {
       id: item.sys.id,
       slug: item.fields.slug,
@@ -16,6 +18,7 @@ const getAllSnippets = async () => {
       description: item.fields.description,
       language: item.fields.language.fields,
       code: item.fields.code,
+      tags: tags
     }
   })
 
