@@ -3,8 +3,7 @@ import { SiJavascript, SiReact, SiCss3, SiTailwindcss, SiHtml5, SiSass, SiTypesc
 import { VscJson } from "react-icons/vsc"
 import { HiDatabase } from "react-icons/hi"
 
-
-
+// Language -> Icon associations
 const icons: ILanguageIcon[] = [
   { name: "javascript", icon: <SiJavascript /> },
   { name: "react", icon: <SiReact /> },

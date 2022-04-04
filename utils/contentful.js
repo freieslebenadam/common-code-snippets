@@ -1,10 +1,12 @@
 const contentful = require("contentful")
 
+// Contentful connection
 const client = contentful.createClient({
   space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
   accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN
 })
 
+// Fetching all snippets
 const getAllSnippets = async () => {
   const { items } = await client.getEntries({ content_type: "snippet" })
 
@@ -25,6 +27,7 @@ const getAllSnippets = async () => {
   return snippets
 }
 
+// Fetching one snippet by slug
 const getSnippet = async (slug) => {
   const { items } = await client.getEntries({
     content_type: "snippet",

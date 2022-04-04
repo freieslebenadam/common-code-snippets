@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import hljs from 'highlight.js'
 import { ISnippet } from '../../types'
-import TagsList from '../UI/TagsList'
+import { TagsList } from '../UI'
 
 type Props = {
   snippet: ISnippet

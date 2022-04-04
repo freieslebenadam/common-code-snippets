@@ -1,15 +1,16 @@
+import React, { useState } from 'react'
+import hljs from 'highlight.js'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
-import React, { useState } from 'react'
-import hljs from 'highlight.js'
+import { MdOutlineContentCopy, MdOutlineCheck } from "react-icons/md"
 import { ISnippet } from '../types'
 import { getAllSnippets, getSnippet } from '../utils/contentful'
 import { HomeButton } from '../components/UI'
+import { TagsList } from '../components/UI'
 import icons from "../utils/icons"
-import TagsList from '../components/UI/TagsList'
-import { MdOutlineContentCopy, MdOutlineCheck } from "react-icons/md"
 
+// Static generation params interface
 interface IStaticParams extends ParsedUrlQuery {
   slug: string
 }
@@ -29,19 +30,22 @@ type Props = {
   snippet: ISnippet
 }
 
+// Snippet detail page
 const DetailPage = ({ snippet }: Props) => {
   const router = useRouter()
   const [copied, setCopied] = useState(false)
   
+  // Fallback for non-existing paths
   if (router.isFallback) {
     return (
-      <div className='flex justify-center items-center h-screen'>
-      </div>
+      <div className='flex justify-center items-center h-screen' />
     )
   }
 
+  // Formatted code with syntax highlighting
   const code = hljs.highlight(snippet.code, { language: snippet.language.name }).value
 
+  // Coppy code to clipboard handler
   const copyCodeToClipboard = () => {
     navigator.clipboard.writeText(snippet.code)
     setCopied(true)
@@ -89,6 +93,7 @@ const DetailPage = ({ snippet }: Props) => {
 
 export default DetailPage
 
+// Generating paths of fetched snippets
 export const getStaticPaths: GetStaticPaths = async () => {
   const snippets: ISnippet[] = await getAllSnippets()
 

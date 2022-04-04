@@ -3,6 +3,7 @@ import { getAllSnippets } from "../utils/contentful"
 import { ISnippet } from '../types'
 import { SnippetsList } from "../components/Snippets"
 
+// Fetching snippets from contentful
 export async function getStaticProps() {
   const snippets: ISnippet[] = await getAllSnippets()
 
@@ -13,11 +14,13 @@ export async function getStaticProps() {
   }
 }
 
+// Specifying types of props
 type Props = {
   children?: React.ReactChild,
   snippets: ISnippet[]
 }
 
+// Index page
 const Home = ({ snippets }: Props) => {
   const [searchInput, setSearchInput] = useState("")
 
