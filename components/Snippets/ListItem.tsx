@@ -19,7 +19,7 @@ const ListItem = ({ snippet }: Props) => {
         {snippet.description}
       </p>
       
-      <pre className='bg-dim-300 rounded shadow-inner p-5 text-sm leading-6'
+      <pre className='bg-dim-300 rounded shadow-inner p-5 text-sm leading-6 overflow-x-clip max-h-40 overflow-y-auto overscroll-none'
         dangerouslySetInnerHTML={{ __html: code }}
       />
     </div>

@@ -9,7 +9,7 @@ const Layout = ({ children }: Props) => {
   return (
     <div className='text-neutral-50'>
       <Head>
-        <title>Daily Tasks</title>
+        <title>Commonly Used Code Snippets</title>
       </Head>
 
       <main className='h-screen background overflow-auto pb-10'>
