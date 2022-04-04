@@ -18,8 +18,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const { slug } = context.params as IStaticParams
   const snippet: ISnippet = await getSnippet(slug)
 
-  console.log("-------generating",snippet)
-
   return {
     props: {
       snippet

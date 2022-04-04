@@ -9,7 +9,9 @@ const Layout = ({ children }: Props) => {
   return (
     <div className='text-neutral-50 selection:bg-dim-200'>
       <Head>
-        <title>Commonly Used Code Snippets</title>
+        <title>Code Snippets For Every Project</title>
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
       </Head>
 
       <main className='h-screen overflow-auto'>
