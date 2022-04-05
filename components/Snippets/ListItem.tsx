@@ -13,7 +13,7 @@ const ListItem = ({ snippet }: Props) => {
   
   return (
     <Link href={`/${snippet.slug}`} passHref>
-      <div key={snippet.id} className='col-span-1 cursor-pointer glass-panel transition-100 hover:shadow-2xl hover:shadow-dim-300 h-[400px] flex flex-col hover:-translate-y-1'>
+      <div key={snippet.id} className='col-span-1 cursor-pointer glass-panel transition-100 hover:shadow-2xl hover:shadow-dim-300 h-[400px] flex flex-col hover:-translate-y-1 hover:backdrop-brightness-110 hover:backdrop-saturate-125'>
         <div className='flex-1'>
           <h2 className='font-semibold'>
             {snippet.name}
@@ -26,7 +26,7 @@ const ListItem = ({ snippet }: Props) => {
           </p>
         </div>
         
-        <pre className='code-segment flex-1'
+        <pre className='code-segment flex-1 whitespace-pre-wrap'
           dangerouslySetInnerHTML={{ __html: code }}
         />
       </div>

@@ -46,18 +46,18 @@ const DetailPage = ({ snippet }: Props) => {
   }
 
   return (
-    <section className="container py-10 px-[10rem] h-screen overflow-hidden animate-fade flex gap-5 relative">
-      <div className='flex-none w-[20vw]'>
+    <section className="container py-10 xl:px-[10rem] lg:h-screen overflow-hidden animate-fade flex flex-col lg:flex-row gap-5 relative">
+      <div className='flex-none w-full lg:w-[20vw]'>
         <HomeButton />
         <div className='glass-panel my-5'>
-          <h2 className='font-semibold'>{snippet.name}</h2>
+          <h2 className='font-semibold break-words'>{snippet.name}</h2>
           <TagsList tags={snippet.tags} />
-          <p className='pt-6 font-light text-sm opacity-80'>
+          <p className='pt-6 font-light text-sm opacity-80 break-words'>
             {snippet.description}
           </p>
         </div>
         <div className='glass-panel'>
-          <p className='flex gap-2 items-center'>
+          <p className='flex lg:flex-col xl:flex-row gap-2 items-center overflow-clip'>
             <span className='font-extralight opacity-80'>Language:</span>
             {" "}
             <span className='font-semibold text-lg flex items-center gap-1'>
@@ -69,9 +69,9 @@ const DetailPage = ({ snippet }: Props) => {
           </p>
         </div>
       </div>
-      <div className='flex-auto glass-panel'>
-        <pre className='code-segment p-3 z-10 leading-5 absolute top-8 right-8 left-8 bottom-8 overflow-y-auto' dangerouslySetInnerHTML={{ __html: code }} />
-        <button className='bg-lighter-100 p-2 w-10 h-10 rounded shadow absolute top-11 right-12 transition-100 hover:shadow-lg hover:scale-105 z-20 cursor-pointer flex justify-center items-center active:scale-95 active:text-rose-200' onClick={copyCodeToClipboard}>
+      <div className='flex-auto glass-panel p-2 lg:p-8'>
+        <pre className='code-segment p-3 z-10 leading-5 min-h-[5rem] lg:absolute top-8 right-8 left-8 bottom-8 overflow-y-auto overflow-x-auto lg:overflow-x-clip lg:whitespace-pre-wrap' dangerouslySetInnerHTML={{ __html: code }} />
+        <button className='bg-lighter-100 p-2 w-10 h-10 rounded shadow absolute top-5 right-5 lg:top-11 lg:right-12 transition-100 hover:shadow-lg hover:scale-105 z-20 cursor-pointer flex justify-center items-center active:scale-95 active:text-rose-200' onClick={copyCodeToClipboard}>
           {copied ?
             (<MdOutlineCheck size={35} className="text-green-500 animate-fade" />) :
             (<MdOutlineContentCopy size={30} className="animate-fade" />)
