@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import hljs from 'highlight.js'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
 import { MdOutlineContentCopy, MdOutlineCheck } from "react-icons/md"
 import { ISnippet } from '../types'
@@ -32,15 +31,7 @@ type Props = {
 
 // Snippet detail page
 const DetailPage = ({ snippet }: Props) => {
-  const router = useRouter()
   const [copied, setCopied] = useState(false)
-  
-  // Fallback for non-existing paths
-  if (router.isFallback) {
-    return (
-      <div className='flex justify-center items-center h-screen' />
-    )
-  }
 
   // Formatted code with syntax highlighting
   const code = hljs.highlight(snippet.code, { language: snippet.language.name }).value
@@ -107,6 +98,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: true
+    fallback: false
   }
 }
