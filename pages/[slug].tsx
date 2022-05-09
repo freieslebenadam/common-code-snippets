@@ -70,7 +70,7 @@ const DetailPage = ({ snippet }: Props) => {
           </p>
         </div>
       </div>
-      <div className='flex-auto glass-panel p-2 lg:p-8'>
+      <div className='flex-auto glass-panel p-2 lg:p-8 relative'>
         <pre className='code-segment p-3 z-10 leading-5 min-h-[5rem] lg:absolute top-8 right-8 left-8 bottom-8 overflow-y-auto overflow-x-auto lg:overflow-x-clip lg:whitespace-pre-wrap' dangerouslySetInnerHTML={{ __html: code }} />
         <button className='bg-lighter-100 p-2 w-10 h-10 rounded shadow absolute top-5 right-5 lg:top-11 lg:right-12 transition-100 hover:shadow-lg hover:scale-105 z-20 cursor-pointer flex justify-center items-center active:scale-95 active:text-rose-200' onClick={copyCodeToClipboard}>
           {copied ?
