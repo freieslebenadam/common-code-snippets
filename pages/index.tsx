@@ -2,15 +2,17 @@ import { useState } from 'react'
 import { getAllSnippets } from "../utils/contentful"
 import { ISnippet } from '../types'
 import { SnippetsList } from "../components/Snippets"
+import { GetStaticProps } from 'next'
 
 // Fetching snippets from contentful
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const snippets: ISnippet[] = await getAllSnippets()
 
   return {
     props: {
       snippets
-    }
+    },
+    revalidate: 60
   }
 }
 
