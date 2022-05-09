@@ -31,7 +31,7 @@ const Home = ({ snippets }: Props) => {
 
       <div className='xs:w-[25rem] text-center mx-auto'>
         <h1 className='tracking-tighter font-semibold mb-4'>Commonly Used Code Snippets</h1>
-        <p className='opacity-80'>This is a "repository" type application for various code snippets I commonly use. Easily accessible and all in one place.</p>
+        <p className='opacity-80'>This is a &quot;repository&quot; type application for various code snippets I commonly use. Easily accessible and all in one place.</p>
       </div>
 
       <div className='py-10'>
