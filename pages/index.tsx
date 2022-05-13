@@ -26,7 +26,7 @@ const Home = ({ snippets }: Props) => {
   return (
     <section className="container pt-20 animate-fade pb-10">
 
-      <div className='xs:w-[25rem] text-center mx-auto'>
+      <div className='xs:w-[25rem] text-center mx-auto mb-10'>
         <h1 className='tracking-tighter font-semibold mb-4'>Commonly Used Code Snippets</h1>
         <p className='opacity-80'>This is a &quot;repository&quot; type application for various code snippets I commonly use. Easily accessible and all in one place.</p>
       </div>
